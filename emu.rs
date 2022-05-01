@@ -18,8 +18,13 @@ struct Emulator {
     memory: Vec<u8>
 }
 
-fn create_emu(size:usize,eip:u32,esp:u32)-> Box(Emulator){
+//fn create_emu(size:usize,eip:u32,esp:u32)-> {
+//}
 
+fn ret_str()-> Box<String>{
+    let mut str=String::from("aaaa");
+    let mut b_str=Box::new(str);
+    b_str
 }
 
 
@@ -31,4 +36,6 @@ fn main(){
     }
     let filename = &args[1];
     println!("filename = {}", filename);
+    let mut str=ret_str();
+    println!("str = {}", str);
 }
