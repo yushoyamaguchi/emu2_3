@@ -18,6 +18,11 @@ struct Emulator {
     memory: Vec<u8>
 }
 
+fn create_emu(size:usize,eip:u32,esp:u32)-> Box(Emulator){
+
+}
+
+
 fn main(){
     let args: Vec<String> = env::args().collect();
     if args.len() != 2 {
