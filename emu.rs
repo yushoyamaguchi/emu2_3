@@ -43,7 +43,11 @@ fn create_emu(size:usize,eip:u32,esp:u32)-> Emulator{
 }
 
 fn bin_to_mem(file: &mut File, emu: &mut Emulator){
-    
+    let i=0;
+    for byte in file.bytes(){
+        emu.memory[cnt]=byte?;
+        cnt+=1;
+    }
 }
 
 fn main(){
