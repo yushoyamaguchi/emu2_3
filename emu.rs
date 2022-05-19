@@ -2,6 +2,8 @@ use std::env;
 use std::process;
 use std::fs::File;
 use Register::*;
+use std::io::prelude::*;
+use std::io;
 
 
 
@@ -42,12 +44,17 @@ fn create_emu(size:usize,eip:u32,esp:u32)-> Emulator{
     emu
 }
 
-fn bin_to_mem(file: &mut File, emu: &mut Emulator){
-    let i=0;
+fn bin_to_mem(file: &mut File, emu: &mut Emulator)-> Result<usize, io::Error>{
+    let mut i=0;
     for byte in file.bytes(){
-        emu.memory[cnt]=byte?;
-        cnt+=1;
+        emu.memory[i]=byte?;
+        i+=1;
     }
+    Ok(i)
+}
+
+fn init_instructions(){
+
 }
 
 fn main(){
@@ -62,4 +69,6 @@ fn main(){
     let mut file = File::open(filename).expect("file not found");
     let type_=type_of(file);
     println!("{}",type_);
+
+    init_instructions();
 }
